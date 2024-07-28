@@ -10,11 +10,10 @@ import SearchEmployee from '../screens/SearchEmployees';
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
-  const {intializing} = useEmployeeStore();
-  console.log(intializing, 'intializing');
+  const {initializing} = useEmployeeStore();
   return (
     <NavigationContainer>
-      <HomeNavigator />
+      {!initializing && <HomeNavigator />}
     </NavigationContainer>
   );
 };
