@@ -6,7 +6,7 @@ import Search from '../assets/icons/search.svg';
 import {useEmployeeStore} from '../store/employeeStore';
 import {colors} from '../utils/colorManager';
 import {commonStyles, textManger} from '../utils/textStyleManager';
-import { DashBoardText, dashBoardText } from '../utils/textManager';
+import {DashBoardText, dashBoardText} from '../utils/textManager';
 
 export default function Home({navigation}) {
   const {details, deleteEmployee, resetDetails} = useEmployeeStore();
@@ -58,7 +58,7 @@ export default function Home({navigation}) {
       marginVertical: 10,
       flexDirection: 'row',
     },
-    clear:{
+    clear: {
       backgroundColor: colors.error,
       borderRadius: 10,
       paddingHorizontal: 10,
@@ -67,43 +67,52 @@ export default function Home({navigation}) {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    justRow:{
+    justRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
-    
   });
   const renderData = ({item}) => {
     return (
       <View style={styles.card}>
-        <View
-          style={styles.justRow}>
+        <View style={styles.justRow}>
           <View>
             <View style={commonStyles.row}>
-              <Text style={textManger.heading_md_default}>{DashBoardText.name}</Text>
+              <Text style={textManger.heading_md_default}>
+                {DashBoardText.name}
+              </Text>
               <Text
                 ellipsizeMode="tail"
                 numberOfLines={1}
-                style={[textManger.heading_md, {width:180}]}>
+                style={[textManger.heading_md, {width: 180}]}>
                 {item.name}
               </Text>
             </View>
             <View style={commonStyles.row}>
-              <Text style={textManger.heading_md_default}>{DashBoardText.department}</Text>
+              <Text style={textManger.heading_md_default}>
+                {DashBoardText.department}
+              </Text>
               <Text style={textManger.heading_md}>{item.department}</Text>
             </View>
             <View style={commonStyles.row}>
-              <Text style={textManger.heading_md_default}>{DashBoardText.position}</Text>
+              <Text style={textManger.heading_md_default}>
+                {DashBoardText.position}
+              </Text>
               <Text style={textManger.heading_md}>{item.position}</Text>
             </View>
             <View style={commonStyles.row}>
-              <Text style={textManger.heading_md_default}>{DashBoardText.email}</Text>
-              <Text ellipsizeMode="tail"
-                numberOfLines={1} style={[textManger.heading_md,{width:180}]}>{item.email}</Text>
+              <Text style={textManger.heading_md_default}>
+                {DashBoardText.email}
+              </Text>
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={[textManger.heading_md, {width: 180}]}>
+                {item.email}
+              </Text>
             </View>
           </View>
-          <View
-            style={[styles.justRow,{width:"20%"}]}>
+          <View style={[styles.justRow, {width: '20%'}]}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('addEmployee', {details: item});
@@ -158,6 +167,11 @@ export default function Home({navigation}) {
         data={details}
         renderItem={renderData}
         style={{width: '100%', flex: 1}}
+        ListEmptyComponent={
+          <View style={commonStyles.centerView}>
+            <Text style={textManger.heading_md}>No Data Found</Text>
+          </View>
+        }
       />
       <TouchableOpacity
         style={styles.button}

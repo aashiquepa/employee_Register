@@ -6,7 +6,6 @@ import {textManger} from '../utils/textStyleManager';
 import PlaceholderErrorTextInput from '../sharedcomponents/textinput/PlaceholderErrorTextInput';
 import {useEmployeeStore} from '../store/employeeStore';
 import {validateEmail} from '../utils/helpers';
-import DropDownPicker from '../sharedcomponents/pickers/DropDownPicker';
 import {DashBoardText, ErrorText, PlaceholderText} from '../utils/textManager';
 
 export default function AddViewEmployee({navigation, route}) {
